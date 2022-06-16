@@ -18,8 +18,9 @@ for index, item in enumerate(morele_finder(item, user_agent)):
     for k, v in item.items():
         print(f"{k} : {v}")
 
-print("X-KOM.PL")
-for index, item in enumerate(xkom_finder(item, user_agent)):
-    print(index)
-    for k, v in item.items():
-        print(f"{k} : {v}")
+# print("X-KOM.PL")
+# for index, item in enumerate(xkom_finder(item, user_agent)):
+#     print(index)
+#     for k, v in item.items():
+#         print(f"{k} : {v}")
+
