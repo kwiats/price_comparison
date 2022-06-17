@@ -1,8 +1,6 @@
 from xkom import xkom_finder
 from morele import morele_finder
 
-import csv
-
 user_agent = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                   "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -23,4 +21,3 @@ for index, item in enumerate(xkom_finder(search_terms, user_agent)):
     print(index)
     for k, v in item.items():
         print(f"{k} : {v}")
-
