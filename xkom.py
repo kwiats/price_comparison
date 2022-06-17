@@ -3,6 +3,12 @@ from bs4 import BeautifulSoup
 
 
 def xkom_finder(search_terms, headers):
+    """
+    Function
+    :param search_terms:
+    :param headers:
+    :return:
+    """
     items = []
     response = requests.get(url=f"https://www.x-kom.pl/",
                             headers=headers)

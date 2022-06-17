@@ -9,18 +9,18 @@ user_agent = {
                   "Chrome/100.0.4896.127 Safari/537.36 OPR/86.0.4363.70 ",
 }
 
-item = "iphone 12 128gb"
+search_terms = "iphone 12 128gb"
 
 
 print("MORELE.NET")
-for index, item in enumerate(morele_finder(item, user_agent)):
+for index, item in enumerate(morele_finder(search_terms, user_agent)):
     print(index)
     for k, v in item.items():
         print(f"{k} : {v}")
 
-# print("X-KOM.PL")
-# for index, item in enumerate(xkom_finder(item, user_agent)):
-#     print(index)
-#     for k, v in item.items():
-#         print(f"{k} : {v}")
+print("X-KOM.PL")
+for index, item in enumerate(xkom_finder(search_terms, user_agent)):
+    print(index)
+    for k, v in item.items():
+        print(f"{k} : {v}")
 
