@@ -15,6 +15,8 @@ def morele_finder(search_terms, headers):
             url=f"https://www.morele.net/wyszukiwarka/0/0/,,,,,,,,0,,,,/1/?q={search_terms}",
             headers=headers)
         soup = BeautifulSoup(response.content, 'lxml')
+        with open('morele_site.html', 'w', encoding='utf-8') as file:
+            file.write(soup.prettify())
 
         if found_pages := soup.find_all(class_="pagination-btn-nolink-anchor"):
             pages = int(str(found_pages).split(">")[1].split("<")[0])
@@ -46,7 +48,9 @@ def morele_finder(search_terms, headers):
                                                            'cat-product'
                                                            '-name'])
             if not found_products:
-                items.append(morele_product(f"/wyszukiwarka/0/0/,,,,,,,,,,,,/1/?q={search_terms}", headers))
+                items.append(morele_product(
+                    f"/wyszukiwarka/0/0/,,,,,,,,,,,,/1/?q={search_terms}",
+                    headers))
 
             for product in found_products[:]:
                 product = product.find_next(class_='productLink', href=True)

@@ -22,6 +22,8 @@ def xkom_finder(search_terms, headers):
                 f"=accuracy_desc&q={search_terms}",
             headers=headers)
         soup = BeautifulSoup(response.content, 'lxml')
+        with open('xkom_site.html', 'w', encoding='utf-8') as file:
+            file.write(soup.prettify())
 
         found_pages = soup.find(
             class_="sc-11oikyw-1 eeUhwh sc-1s2eiz4-0 hkZjZe", max=True)
@@ -35,12 +37,13 @@ def xkom_finder(search_terms, headers):
                     headers=headers)
                 soup = BeautifulSoup(response.content, 'lxml')
 
+
                 found_product = soup.find_all(
-                    class_="sc-162ysh3-1 dAqvUz sc-fBuWsC iSVGRw")
+                    class_="sc-1yu46qn-10 iQhjQS")
 
                 for product in found_product[:]:
                     product = product.find_next(
-                        class_="sc-1h16fat-0 sc-1yu46qn-7 kaqYqE", href=True)
+                        class_="sc-1h16fat-0 irSQpN", href=True)
                     link = product['href']
 
                     items.append(xkom_product(link, headers))
@@ -98,8 +101,8 @@ def xkom_product(link, headers):
         product_price = 0
 
     product = {"title": product_title,
-               "price": product_price,
                "access": access,
+               "price": product_price,
                "link": product_url, }
 
     return product
